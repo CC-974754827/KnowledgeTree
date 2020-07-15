@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>点我</div>
+    <!--
+        捕获触发事件的顺序会是：
+        document
+        <html>
+        <body>
+        <div>点我</div>
+
+        冒泡触发事件的顺序会是：
+        <div>点我</div>
+        <body>
+        <html>
+        document
+    -->
+    <div id="parent">
+        父元素
+        <div id="child">子元素</div>
+    </div>
+    <!--
+        点击子元素，顺序为：
+        "Parent Capturing"
+        "Child Capturing"
+        "Child Bubbling"
+        "Parent Bubbling"
+
+        点击父元素，顺序为：
+        "Parent Capturing"
+        "Parent Bubbling"
+    -->
+    <script>
+        var parent = document.getElementById('parent');
+        var child = document.getElementById('child');
+
+        parent.addEventListener('click', function () {
+        console.log('Parent Capturing');
+        }, true);
+
+        parent.addEventListener('click', function () {
+        console.log('Parent Bubbling');
+        }, false);
+        // 子层中的Capturing或Bubbling，执行顺序由代码的顺序而定
+        child.addEventListener('click', function () {
+        console.log('Child Capturing');
+        }, true);
+
+        child.addEventListener('click', function () {
+        console.log('Child Bubbling');
+        }, false);
+    </script>
+</body>
+</html>

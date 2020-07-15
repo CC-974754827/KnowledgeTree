@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        事件处理函数，就是处理用户操作的函数，不同的操作对应不同的名称。
+        在DOM元素上绑定onclick、onmouseover、onmouseout、onmousedown、onmouseup、ondblclick、onkeydown、onkeypress、onkeyup等
+        三种常用的绑定事件的方法：
+        1.在DOM元素中直接绑定；
+        2.在JavaScript代码中绑定； 
+            在JavaScript代码中（即 script 标签内）绑定事件可以使JavaScript代码与HTML标签分离，文档结构清晰，便于管理和开发。
+        3.绑定事件监听函数；
+            绑定事件的另一种方法是用 addEventListener() [W3C]或 attachEvent() [IE]来绑定事件监听函数
+    -->
+    <!--
+        事件监听
+        W3C规范中定义了3个事件阶段，依次是捕获阶段、目标阶段、冒泡阶段。
+        [IE8以下不支持]
+        element.addEventListener(event, function, useCapture)
+            event : （必需）事件名，支持所有 DOM事件 。
+            function：（必需）指定要事件触发时执行的函数。
+            useCapture：（可选）指定事件是否在捕获或冒泡阶段执行。true，捕获。false，冒泡。默认false。
+        
+        IE标准
+        element.attachEvent(event, function)
+            event：（必需）事件类型。需加“on“，例如：onclick。
+            function：（必需）指定要事件触发时执行的函数。
+
+        优点：
+        1.可以绑定多个事件[常规的事件绑定只执行最后绑定的事件，事件监听可以绑定多个]
+    -->
+    <input type="button" value="在DOM元素中直接绑定" onclick="hello()">
+    <input type="button" value="在JavaScript代码中绑定" id="btn1">
+    <input type="button" value="事件监听" id="btn2">
+    <input type="button" value="绑定多个事件 常规" id="btn3">
+    <input type="button" value="绑定多个事件 事件监听" id="btn4">
+    <input type="button" value="解除事件绑定" id="btn5">
+    <input type="button" value="解除事件绑定" id="btn55">
+    <input type="button" value="封装事件监听" id="btn6">
+
+    <script>
+        // 在DOM元素中直接绑定
+        function hello(){
+            console.log("在DOM元素中直接绑定");
+        }
+
+        // 在JavaScript代码中绑定
+        document.getElementById("btn1").onclick = function(){
+            console.log("在JavaScript代码中绑定");
+        }
+
+        // 事件监听
+        document.getElementById("btn2").addEventListener("click",hello1);
+        // document.getElementById("btn1").attachEvent("click",hello1);  IE标准
+        function hello1(){
+            console.log("事件监听");
+        }
+
+        // 绑定多个事件
+        // 常规事件只执行最后绑定的事件
+        var btn3 = document.getElementById("btn3");
+        btn3.onclick = function(){
+            console.log("绑定多个事件 1"); //不执行
+        }
+        btn3.onclick = function(){
+            console.log("绑定多个事件 2"); //执行
+        }
+        // 事件监听可以执行多个绑定
+        var btn4 = document.getElementById("btn4");
+        btn4.addEventListener("click",hello2);
+        btn4.addEventListener("click",hello3);
+        function hello2(){
+            console.log("事件监听 1");
+        }
+        function hello3(){
+            console.log("事件监听 2");
+        }
+
+        // 解除绑定 removeEventListener
+        var btn5 = document.getElementById("btn5");
+        btn5.addEventListener("click",hello4);//执行了
+        btn5.addEventListener("click",hello5);//不执行
+        btn5.removeEventListener("click",hello5);
+        function hello4(){
+            console.log("绑定1");
+        }
+        function hello5(){
+            console.log("绑定2");
+        }
+        // 由于addEventListener()可以同时针对某个事件绑定多个函数，所以通过removeEventListener()解除事件的时候，
+        // 第二个参数的函数必须要与先前在addEventListener()绑定的函数是同一个实体
+        var btn55 = document.getElementById("btn55");
+        var clickHandler = function(){
+            console.log('HI');
+        };
+        btn55.addEventListener('click', clickHandler, false);
+        // 移除 clickHandler
+        btn55.removeEventListener('click', clickHandler, false);
+
+        // 封装事件监听
+        // 绑定监听事件
+        function addEventHandler(target, type, fn){
+            if(target.addEventListener){
+                target.addEventListener(type, fn);
+            }else{
+                target.attachEvent("on" + type, fn);
+            }
+        }
+        function removeEventHandler(target, type, fn){
+            if(target.removeEventListener){
+                target.removeEventListener(type, fn);
+            }else{
+                target.detachEvent("on" + type, fn);
+            }
+        }
+        var btn6 = document.getElementById('btn6');
+        addEventHandler(btn6, "click", hello6);
+        addEventHandler(btn6, "click", hello7);
+        removeEventHandler(btn6, "click", hello6);
+        function hello6(){
+            console.log('封装事件 1');
+        }
+        function hello7(){
+            console.log('封装事件 2');
+        }
+    </script>
+</body>
+</html>

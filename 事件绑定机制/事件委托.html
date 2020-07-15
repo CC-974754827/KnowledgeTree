@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        事件委托
+        就是利用冒泡的原理，把事件加到父元素或祖先元素上，触发执行效果。
+    
+        优点:
+        1.提高JavaScript性能。事件委托可以显著的提高事件的处理速度，减少内存的占用
+        2.动态的添加DOM元素，不需要因为元素的改动而修改事件绑定[可以为新添加的DOM元素动态的添加事件]
+    -->
+    <ul id="list">
+        <li id="item1" >item1</li>
+        <li id="item2" >item2</li>
+        <li id="item3" >item3</li>
+    </ul>
+    <ul id="list2">
+        <li id="item4" >item4</li>
+        <li id="item5" >item5</li>
+        <li id="item6" >item6</li>
+    </ul>
+    <script>
+        var item1 = document.getElementById('item1');
+        var item2 = document.getElementById('item2');
+        var item3 = document.getElementById('item3');
+        document.addEventListener("click", function(event){
+            var target = event.target;
+            if(target == item1){
+                console.log('item1');
+            }else if(target == item2){
+                console.log('item2');
+            }else if(target == item3){
+                console.log('item3');
+            }
+        });
+
+        var list = document.getElementById('list2');
+        document.addEventListener('click', function(event){
+            var target = event.target;
+            if(target.nodeName == "LI"){
+                console.log(target.innerHTML);
+            }
+        })
+        var node = document.createElement('li');
+        var textNode = document.createTextNode('item7');
+        node.appendChild(textNode);
+        list.appendChild(node);
+    </script>
+</body>
+</html>
