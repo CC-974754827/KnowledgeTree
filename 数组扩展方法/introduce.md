@@ -1,0 +1,50 @@
+
+|<div style="width: 85px">方法名</div>| <div style="width: 150px">功能 </div>|<div style="width: 60px"> 原数组是否改变</div>
+|:---------:|:----------:|:------:|:---------------:|
+concat()|合并数组，并返回合并之后的数据|n
+join()|使用分隔符，将数组转为字符串并返回	|n
+pop()|删除最后一位，并返回删除的数据|y
+shift()|删除第一位，并返回删除的数据|y
+unshift()|在第一位新增一或多个数据，返回长度|y
+push()|在最后一位新增一或多个数据，返回长度|y
+reverse()|反转数组，返回结果|y
+slice()|截取指定位置的数组，并返回|n
+sort()|排序（字符规则），返回结果|y
+splice()|删除指定位置，并替换，返回删除的数据|y
+toString()|直接转为字符串，并返回|n
+valueOf()|返回数组对象的原始值|n
+indexOf()|查询并返回数据的索引|n
+lastIndexOf()|反向查询并返回数据的索引|n
+forEach()|参数为回调函数，会遍历数组所有的项，回调函数接受三个参数，分别为value，index，self；forEach没有返回值|n
+map()|同forEach，同时回调函数返回数据，组成新数组由map返回|n
+filter()|同forEach，同时回调函数返回布尔值，为true的数据组成新数组由filter返回|n
+every()|同forEach，同时回调函数返回布尔值，全部为true，由every返回true|n
+some()|同forEach，同时回调函数返回布尔值，只要由一个为true，由some返回true|n
+reduce()|归并，同forEach，迭代数组的所有项，并构建一个最终值，由reduce返回|n
+reduceRight()|反向归并，同forEach，迭代数组的所有项，并构建一个最终值，由reduceRight返回|n
+copyWithin()|用于从数组的指定位置拷贝元素到数组的另一个指定位置中|y
+entries()|返回一个数组的迭代对象，该对象包含数组的键值对 (key/value)[对键值对的遍历]|n
+fill() | 用于将一个固定值替换数组的元素 |y
+find() | 返回通过测试（函数内判断）的数组的第一个元素的值|n
+findIndex()|返回传入一个测试条件（函数）符合条件的数组第一个元素位置|n
+from()|用于通过拥有 length 属性的对象或可迭代的对象来返回一个数组|-
+includes()|用来判断一个数组是否包含一个指定的值，如果是返回 true，否则false|n
+keys()|用于从数组创建一个包含数组键名的可迭代对象[对键名的遍历]|n
+values()|用于从数组创建一个包含数组键值的可迭代对象[对键值的遍历]|n
+
+> shift() 和 unshift() 方法，实现类似队列的行为[先进先出]
+> push() 和 pop() 方法，实现类似栈行为[后进先出]
+
+
+#### 数组方法会改变原数组
+```
+unshift();
+push()；
+shift();
+pop();
+sort();
+reverse();
+splice();
+copyWithin()
+fill()
+```
