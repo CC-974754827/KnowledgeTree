@@ -8,4 +8,4 @@
 * 基本类型在赋值的时候拷贝值；引用类型在赋值的时候只拷贝地址，不拷贝值；
 
 #### 基本类型与引用类型的复制
-![image](https://github.com/CC-974754827/KnowledgeTree/blob/master/值传递与引用传递/基本类型复制.jpeg)
+![image](https://github.com/CC-974754827/KnowledgeTree/blob/master/值传递与引用传递/基本类型复制.png)
