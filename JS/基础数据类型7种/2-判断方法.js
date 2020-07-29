@@ -8,6 +8,22 @@
  *      判断某个对象属于哪种内置类型
  */
 
+// typeof是检测基本数据类型的最佳工具，但是对检测引用类型，返回的都是object，并不能确定是哪种类型的对象，没有实在意义
+// 基本类型：基本类型的null，返回object，其他的都能正常检测出准确的类型
+typeof('a'); // 'string'
+typeof(123); // 'number'
+typeof(NaN); // 'number'
+typeof(cc) // 'undefined' 未定义变量undefined
+typeof(undefined); // 'undefined'
+typeof(true); // 'boolean'
+typeof(null); // 'object'
+
+// 引用类型：function是特殊类型，可以直接用typeof来判断是否是function
+typeof([]); // 'object'
+typeof({}); // 'object'
+typeof(function(){}); // 'function'
+
+
 // 对象的 constructor 属性
 var arr = [1,2,3];
 console.log(arr.constructor === Array)   // true
