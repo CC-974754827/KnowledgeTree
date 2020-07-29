@@ -50,3 +50,12 @@ const obj2 = obj1;
 |  obj1 |    （Object类型）      |—————————————————————————————|
 |———————|———————————————————————|
 ```
+#### 复制引用类型
+```
+JSON方法 或 深克隆
+var a = {name:1, value:2};
+var b = JSON.parse(JSON.stringify(a));
+b.name = 'mary';
+console.log(a);  //{name: 1, value: 2}
+console.log(b);  //{name: "mary", value: 2}
+```
