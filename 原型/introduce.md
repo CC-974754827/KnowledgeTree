@@ -34,14 +34,15 @@ console.log(per.__proto__ === Person.prototype); // true
 console.log(Person.prototype.constructor === Person); // true
 console.log(Object.getPrototypeOf(per) === Person.prototype); // true
 ```
-> 构造函数    prototype         实例原型
-> Person   ————————————>   Person.prototype
->   |      <————————————          ↑
->   |        constructor          |
->   | new                         |
->   ↓       __proto__             |
->  per  ————————————————————————  |
-
+```
+构造函数    prototype         实例原型
+Person   ————————————>   Person.prototype
+  |      <————————————          ↑
+  |        constructor          |
+  | new                         |
+  ↓       __proto__             |
+ per  ————————————————————————  |
+```
 * 在js中万物都是对象，对象和对象之间也有关系，并不是孤立存在的。对象之间的继承关系，在js中是通过prototype对象指向父类对象，直到指向Object对象为止，这形成了一个原型指向的链条，即原型链
 > 如 person -> Person -> Object，人继承人类，人类继承对象类
 
@@ -60,6 +61,7 @@ var per = new Person();
 console.log(per.a); // 123
 console.log(per.hasOwnProperty('a')); // false
 console.log('a' in per); // true
+```
 ```
 > 构造函数    prototype         实例原型
 > Person   ————————————>   Person.prototype
