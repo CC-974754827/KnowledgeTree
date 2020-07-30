@@ -26,6 +26,7 @@ Person   ————————————>   Person.prototype
 
 #### 原型链
 * __proto__和constructor
+
 每一个对象数据类型（普通对象、实例、prototype...）自带一个属性__proto__，属性值是当前实例所属类的原型(prototype)，原型对象中有一个属性constructor，它指向函数对象
 ```
 function Person(){}
