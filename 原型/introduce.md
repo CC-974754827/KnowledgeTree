@@ -18,10 +18,10 @@ console.log(per); // Person {name: "zs", age: 18, gender: "boy", say: ƒ}
 
 #### 原型
 在js中，每当定义一个函数数据类型（普通函数，类）时，会自带一个prototype属性，这个属性指向函数的原型对象，并且这个属性是一个对象数据类型的值
-
-> Person   ————————————>   Person.prototype
-> 构造函数    prototype         实例原型
-
+```
+Person   ————————————>   Person.prototype
+构造函数    prototype         实例原型
+```
 原型对象相当于一个公共的区域，使得同一个类的实例都可以访问到这个原型对象，可以将对象中共有的内容，统一设置到原型对象中
 
 #### 原型链
@@ -75,3 +75,4 @@ console.log('a' in per); // true
 >            constructor             |   __proto__
 >                                    ↓
 >                                   null
+```
