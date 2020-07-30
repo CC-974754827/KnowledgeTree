@@ -63,18 +63,18 @@ console.log(per.hasOwnProperty('a')); // false
 console.log('a' in per); // true
 ```
 ```
-> 构造函数    prototype         实例原型
-> Person   ————————————>   Person.prototype
->   |      <————————————          ↑  |
->   |        constructor          |  |
->   | new                         |  |
->   ↓       __proto__             |  |
->  per  ————————————————————————  |  |   __proto__
->                                    |
->            prototype               ↓
->  Object() ————————————>  Object.prototype
->           <————————————            |
->            constructor             |   __proto__
->                                    ↓
->                                   null
+构造函数    prototype         实例原型
+Person   ————————————>   Person.prototype
+  |      <————————————          ↑  |
+  |        constructor          |  |
+  | new                         |  |
+  ↓       __proto__             |  |
+ per  ————————————————————————  |  |   __proto__
+                                   |
+           prototype               ↓
+ Object() ————————————>  Object.prototype
+          <————————————            |
+           constructor             |   __proto__
+                                   ↓
+                                  null
 ```
