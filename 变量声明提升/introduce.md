@@ -33,7 +33,9 @@ ES5提升有变量提升和函数提升
 * 函数声明的优先级优于变量声明，且函数声明会连带定义一起被提升
 
 #### 函数和变量同时提升
+```
 // ƒ test(){ console.log('函数'); }
 console.log(test);
 function test(){ console.log('函数'); }
 var test = '变量';
+```
